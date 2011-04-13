@@ -1,0 +1,9 @@
+#!/bin/bash
+mkdir /tmp/emacsdownload && cd /tmp/emacsdownload
+curl http://braeburn.aquamacs.org/~dr/Aquamacs/24/Aquamacs-nightly.tar.bz2 -o /tmp/emacsdownload/aquamacs.tar.bz2
+tar xvjf /tmp/emacsdownload/aquamacs.tar.bz2
+killall -v Aquamacs #force close, be carefull might loose data
+rm -rf /Applications/AquamacsOld.app
+mv -f /Applications/Aquamacs.app /Applications/AquamacsOld.app
+cp -R /tmp/emacsdownload/Aquamacs.app /Applications
+rm -rf /tmp/emacsdownload
