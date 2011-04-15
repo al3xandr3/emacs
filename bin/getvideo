@@ -1,3 +1,2 @@
-# mms://velblod2.ijs.si:80/2009/pascal2/mlss09uk_cambridge/mackay_it/mlss09uk_mackay_it_01.wmv 
+# use with: mms://velblod2.ijs.si:80/2009/pascal2/mlss09uk_cambridge/mackay_it/mlss09uk_mackay_it_01.wmv 
 /Applications/VLC.app/Contents/MacOS/VLC -I rc $1 --sout ~/Desktop/$2.avi vlc://quit;
-2mp4 ~/Desktop/$2.avi
