@@ -22,7 +22,7 @@
 
 (defun stats ()
   (interactive)
-  (find-file "/my/statistician/statistician.org"))
+  (find-file "/my/stats/stats.org"))
 
 (defun blog ()
   (interactive)
@@ -210,7 +210,7 @@
       org-agenda-files (list "/my/config/org/me.org"
                              "/my/config/org/skype.org"
                              "/my/config/org/optimizer.org"
-                             "/my/statistician/statistician.org"))
+                             "/my/stats/stats.org"))
 (global-set-key "\C-ca" 'org-agenda) 
 
 ;; Export
