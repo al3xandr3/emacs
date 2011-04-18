@@ -47,6 +47,7 @@ alias diffsvn="svn diff --diff-cmd diff-filemergesvn " # svn diff using filemerg
 export JRUBY_HOME=/my/config/bin/java/jruby-1.5.1
 export PATH=$JRUBY_HOME/bin:$PATH
 
-# javascript execute(for jslint)
-alias js="java -cp /my/config/bin/javascript/rhino1_7R2/js.jar:/my/config/bin/javascript/jline.jar org.mozilla.javascript.tools.shell.Main -opt -1"    
-alias jsd="java -cp  /my/config/bin/javascript/rhino1_7R2/js.jar org.mozilla.javascript.tools.debugger.Main"
+# rhino (for jslint)
+alias rhino="java -jar /my/config/bin/javascript/rhino1_7R2/js.jar "
+alias rhino-shell="java -cp /my/config/bin/javascript/rhino1_7R2/js.jar:/my/config/bin/javascript/jline.jar org.mozilla.javascript.tools.shell.Main -opt -1"    
+alias rhino-debug="java -cp  /my/config/bin/javascript/rhino1_7R2/js.jar org.mozilla.javascript.tools.debugger.Main"
