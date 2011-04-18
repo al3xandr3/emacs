@@ -54,3 +54,13 @@
      (define-key ruby-mode-map (kbd "C-c e") 'ruby-send-region-and-go)
      (define-key ruby-mode-map (kbd "C-c c") 'ruby-run-w/compilation)
      ))
+
+;; Clear the compilation buffer between test runs
+(eval-after-load 'ruby-compilation
+  '(progn
+     (defadvice ruby-do-run-w/compilation (before kill-buffer (name cmdlist))
+       (let ((comp-buffer-name (format "*%s*" name)))
+         (when (get-buffer comp-buffer-name)
+           (with-current-buffer comp-buffer-name
+             (delete-region (point-min) (point-max))))))
+     (ad-activate 'ruby-do-run-w/compilation)))

@@ -59,34 +59,76 @@
                (coffee-compile-file))))
 
 
-(require 'flymake)
+;; (require 'flymake)
+;;  
+;; (defun flymake-jslint-init ()
+;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;         	     'flymake-create-temp-inplace))
+;;          (local-file (file-relative-name
+;;         	      temp-file
+;;         	      (file-name-directory buffer-file-name))))
+;;     (list "java" 
+;;           (list "-jar" 
+;;                 "/my/config/bin/javascript/rhino1_7R2/js.jar" 
+;;                 "/my/config/bin/javascript/lint/rhino_jslint.js" 
+;;                 local-file))))
+;;  
+;; (setq flymake-allowed-file-name-masks
+;;       (cons '(".+\\.js$"
+;;               flymake-jslint-init
+;;               flymake-simple-cleanup
+;;               flymake-get-real-file-name)
+;;             flymake-allowed-file-name-masks))
+;;  
+;; (setq flymake-err-line-patterns 
+;;       (cons 
+;;        '("^Lint at line \\([[:digit:]]+\\) character \\([[:digit:]]+\\): \\(.+\\)$"  
+;;               nil 1 2 3)
+;;             flymake-err-line-patterns))
+;;  
+;; (provide 'flymake-jslint)
+;;  
+;; (require 'flymake-jslint)
+;; (add-hook 'js-mode-hook
+;;           (lambda () (flymake-mode t)))
 
-(defun flymake-jslint-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-		     'flymake-create-temp-inplace))
-         (local-file (file-relative-name
-		      temp-file
-		      (file-name-directory buffer-file-name))))
-    (list "java" 
-          (list "-jar" 
-                "/my/config/bin/javascript/rhino1_7R2/js.jar" 
-                "/my/config/bin/javascript/lint/rhino_jslint.js" 
-                local-file))))
 
-(setq flymake-allowed-file-name-masks
-      (cons '(".+\\.js$"
-	      flymake-jslint-init
-	      flymake-simple-cleanup
-	      flymake-get-real-file-name)
-	    flymake-allowed-file-name-masks))
+;;;; Flymake
+(eval-after-load 'js
+  '(progn
+     ;; libraries
+     (require 'flymake)
 
-(setq flymake-err-line-patterns 
-      (cons '("^Lint at line \\([[:digit:]]+\\) character \\([[:digit:]]+\\): \\(.+\\)$"  
-	      nil 1 2 3)
-	    flymake-err-line-patterns))
+     (defun flymake-jslint-init ()
+       (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                          'flymake-create-temp-inplace))
+              (local-file (file-relative-name
+                           temp-file
+                           (file-name-directory buffer-file-name))))
+         (list "java" 
+               (list "-jar" 
+                     "/my/config/bin/javascript/rhino1_7R2/js.jar" 
+                     "/my/config/bin/javascript/lint/rhino_jslint.js" 
+                     local-file))))
 
-(provide 'flymake-jslint)
+     (push '(".+\\.js$" flymake-jslint-init flymake-simple-cleanup flymake-get-real-file-name)
+           flymake-allowed-file-name-masks)
 
-(require 'flymake-jslint)
-(add-hook 'js-mode-hook
-	  (lambda () (flymake-mode t)))
+     (push '("^Lint at line \\([[:digit:]]+\\) character \\([[:digit:]]+\\): \\(.+\\)$"  
+             nil 1 2 3)
+      flymake-err-line-patterns)
+
+     (add-hook 'js-mode-hook
+               (lambda ()
+                 (when (and buffer-file-name
+                            (file-writable-p
+                             (file-name-directory buffer-file-name))
+                            (file-writable-p buffer-file-name)
+                            (if (fboundp 'tramp-list-remote-buffers)
+                                (not (subsetp
+                                      (list (current-buffer))
+                                      (tramp-list-remote-buffers)))
+                              t))
+                   (local-set-key (kbd "C-c d")
+                                  'flymake-display-err-menu-for-current-line)
+                   (flymake-mode t))))))
