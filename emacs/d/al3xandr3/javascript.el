@@ -17,7 +17,8 @@
   (interactive)
   (message (buffer-file-name))
   (if (or 
-       (string-match "\/wa-core\\.js$" (buffer-file-name))
+       (string-match "\/wa\\.js$" (buffer-file-name))
+       (string-match "\/wa-deprecated\\.js$" (buffer-file-name))
        (string-match "\/s_code\\.js$" (buffer-file-name))
        (string-match "\/trackable\\.js$" (buffer-file-name))
        (string-match "\/wa-static\\.js$" (buffer-file-name)))
@@ -32,7 +33,7 @@
 (defun al3xandr3/js-save-hooks ()
   (if (equal major-mode 'js-mode)
       (progn
-        ;;(al3xandr3/js-lint)
+        (al3xandr3/js-lint)
         (al3xandr3/js-compile)
         )))
 
@@ -57,41 +58,6 @@
           '(lambda ()
              (when (string-match "\.coffee$" (buffer-name))
                (coffee-compile-file))))
-
-
-;; (require 'flymake)
-;;  
-;; (defun flymake-jslint-init ()
-;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy
-;;         	     'flymake-create-temp-inplace))
-;;          (local-file (file-relative-name
-;;         	      temp-file
-;;         	      (file-name-directory buffer-file-name))))
-;;     (list "java" 
-;;           (list "-jar" 
-;;                 "/my/config/bin/javascript/rhino1_7R2/js.jar" 
-;;                 "/my/config/bin/javascript/lint/rhino_jslint.js" 
-;;                 local-file))))
-;;  
-;; (setq flymake-allowed-file-name-masks
-;;       (cons '(".+\\.js$"
-;;               flymake-jslint-init
-;;               flymake-simple-cleanup
-;;               flymake-get-real-file-name)
-;;             flymake-allowed-file-name-masks))
-;;  
-;; (setq flymake-err-line-patterns 
-;;       (cons 
-;;        '("^Lint at line \\([[:digit:]]+\\) character \\([[:digit:]]+\\): \\(.+\\)$"  
-;;               nil 1 2 3)
-;;             flymake-err-line-patterns))
-;;  
-;; (provide 'flymake-jslint)
-;;  
-;; (require 'flymake-jslint)
-;; (add-hook 'js-mode-hook
-;;           (lambda () (flymake-mode t)))
-
 
 ;;;; Flymake
 (eval-after-load 'js

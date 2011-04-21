@@ -40,8 +40,8 @@ alias remotesql="sh /my/config/bin/remotesql.sh"
 alias backup="sh /my/config/bin/backup.sh"
 
 # diff
-alias diffw="opendiff " # windowed diff
-alias diffsvn="svn diff --diff-cmd diff-filemergesvn " # svn diff using filemerge
+alias diff-ui="opendiff " # windowed diff
+alias diff-svn="svn diff --diff-cmd diff-filemergesvn " # svn diff using filemerge
 
 # jruby setup
 export JRUBY_HOME=/my/config/bin/java/jruby-1.5.1
