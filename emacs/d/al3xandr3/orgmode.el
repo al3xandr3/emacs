@@ -31,6 +31,20 @@
             (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
             (define-key yas/keymap [tab] 'yas/next-field)))
 
+;; Shift Select Keybindings
+;; use C-c C-t instead for Toggling between TODO, DONE, etc..
+(add-hook 'org-mode-hook
+	  '(lambda ()
+	     (define-key org-mode-map [(shift left)]   'ignore)
+	     (define-key org-mode-map [(shift left)]   'backward-char)
+	     (define-key org-mode-map [(shift right)]  'ignore)
+	     (define-key org-mode-map [(shift right)]  'forward-char)
+	     (define-key org-mode-map [(shift up)]     'ignore)
+	     (define-key org-mode-map [(shift up)]     'previous-line)
+	     (define-key org-mode-map [(shift down)]   'ignore)
+	     (define-key org-mode-map [(shift down)]   'next-line)	       
+	     ))
+
 ;;;; Behaviour Setup
 (setq org-directory "/my/config/org/")
 (setq org-startup-indented t) ;; automatic indentation
@@ -105,13 +119,13 @@
 ;;;; (org)Blog
 (defun blog-rb ()
   (interactive)
-  (sheller ".*" "ruby /my/al3xandr3.github.com/pre-process.rb" "" "")
-  (sheller ".*" "ruby /my/al3xandr3.github.com/tags.rb" "" "")
-  (sheller ".*" "ruby /my/al3xandr3.github.com/cloud.rb" "" ""))
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/al3xandr3.github.com/pre-process.rb" "" "")
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/al3xandr3.github.com/tags.rb" "" "")
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/al3xandr3.github.com/cloud.rb" "" ""))
 
 (defun blog-server ()
   (interactive)
-  (sheller ".*" "cd /my/al3xandr3.github.com/; rm -rf _site/; jekyll --server &" "" ""))
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8; cd /my/al3xandr3.github.com/; rm -rf _site/; jekyll --server &" "" ""))
 (global-set-key (kbd "C-z") 'blog-server)
 
 (defun blog-open ()

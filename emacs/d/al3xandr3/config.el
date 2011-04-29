@@ -33,7 +33,11 @@
                     :weight 'bold :underline t :overline nil :slant 'normal)
 
 ;; Jumping beteen windows will use the meta key
-(windmove-default-keybindings 'meta)
+;;(windmove-default-keybindings 'meta)
+(global-set-key [(ctrl meta left)]  'windmove-left)
+(global-set-key [(control meta up)]    'windmove-up)
+(global-set-key [(control meta right)] 'windmove-right)
+(global-set-key [(control meta down)]  'windmove-down)
 
 ;; allow to downcase-region a full region
 (put 'downcase-region 'disabled nil)
@@ -120,3 +124,17 @@
    (buffer-file-name (current-buffer))
    ""))
 
+;;;;;;;;;;;; Full Screen
+(defun fullscreen ()
+  "Switches to a WriteRoom-like fullscreen style"
+  (interactive)	
+  (when (featurep 'aquamacs)
+    ;; switch to white on black
+    ;;(color-theme-initialize)
+    ;;(color-theme-clarity)
+    ;; switch to Garamond 36pt
+    ;;(aquamacs-autoface-mode 0)
+    ;;(set-frame-font "-apple-garamond-medium-r-normal--36-360-72-72-m-360-iso10646-1")
+    ;; switch to fullscreen mode
+    (aquamacs-toggle-full-frame)))
+(global-set-key (kbd "C-M-F") 'fullscreen)

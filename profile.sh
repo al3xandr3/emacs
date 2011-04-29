@@ -18,7 +18,7 @@ bind '"\e[B": history-search-forward'
 export CDPATH=".:..:../..:/skype:/my"
 
 # adding ~/bin/exec as path
-export PATH=/my/config/bin:$PATH
+export PATH=/my/config/bin:/usr/local/sbin:/usr/local/bin:$PATH
 
 # increase bash_history size
 HISTCONTROL=erasedups 
