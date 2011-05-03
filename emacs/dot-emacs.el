@@ -25,9 +25,9 @@
   (interactive)
   (find-file "/my/config/org/optimizer.org"))
 
-(defun stats ()
+(defun data ()
   (interactive)
-  (find-file "/my/stats/stats.org"))
+  (find-file "/my/data/data.org"))
 
 (defun blog ()
   (interactive)

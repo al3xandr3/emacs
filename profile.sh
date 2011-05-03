@@ -41,11 +41,21 @@ alias backup="sh /my/config/bin/backup.sh"
 
 # diff
 alias diff-ui="opendiff " # windowed diff
-alias diff-svn="svn diff --diff-cmd diff-filemergesvn " # svn diff using filemerge
+alias diff-svn="svn diff --diff-cmd diff-filemergesvn " # svn diff w/ filemerge
 
+# ruby
+# libs folder
+libs=$(find /dmg/ruby -type d | grep 'lib$')
+for d in $libs; do 
+ export RUBYLIB=$d:$RUBYLIB 
+done
+#for_each 'cdq ~/develop && dirs lib' 'RUBYLIB=$RUBYLIB:$each'
+#export RUBYLIB=/dmg/ruby/rubyvis/lib:$RUBYLIB
 # jruby setup
 export JRUBY_HOME=/my/config/bin/java/jruby-1.5.1
 export PATH=$JRUBY_HOME/bin:$PATH
+
+
 
 # rhino (for jslint)
 alias rhino="java -jar /my/config/bin/javascript/rhino1_7R2/js.jar "

@@ -67,7 +67,7 @@
       org-agenda-files (list "/my/config/org/me.org"
                              "/my/config/org/skype.org"
                              "/my/config/org/optimizer.org"
-                             "/my/stats/stats.org"))
+                             "/my/data/data.org"))
 (global-set-key "\C-ca" 'org-agenda) 
 
 ;; Export
