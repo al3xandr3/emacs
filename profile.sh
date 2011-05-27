@@ -1,3 +1,5 @@
+#!/bin/bash 
+shopt -s expand_aliases
 
 # Figuring out what system we on
 platform='unknown'
@@ -16,6 +18,7 @@ bind '"\e[B": history-search-forward'
 # search cd in parallel in all these dirs
 # for tab completion, check: bash-completion
 export CDPATH=".:..:../..:/skype:/my"
+alias mylib="cd /dmg/ruby/mylib"
 
 # adding ~/bin/exec as path
 export PATH=/my/config/bin:/usr/local/sbin:/usr/local/bin:$PATH
@@ -54,7 +57,7 @@ done
 # jruby setup
 export JRUBY_HOME=/my/config/bin/java/jruby-1.5.1
 export PATH=$JRUBY_HOME/bin:$PATH
-
+alias rb="ruby"
 
 
 # rhino (for jslint)

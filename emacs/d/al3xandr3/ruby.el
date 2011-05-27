@@ -73,3 +73,5 @@
            (with-current-buffer comp-buffer-name
              (delete-region (point-min) (point-max))))))
      (ad-activate 'ruby-do-run-w/compilation)))
+
+(load-file "/my/config/emacs/d/haml-mode.el")

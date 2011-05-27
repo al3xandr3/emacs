@@ -23,6 +23,7 @@
        (string-match "\/trackable\\.js$" (buffer-file-name))
        (string-match "\/wa-static\\.js$" (buffer-file-name))
        (string-match "\/wa-secure\\.js$" (buffer-file-name))
+       (string-match "\/wa-shop2\\.js$" (buffer-file-name))
        )
       (progn
         (message "compiling...")
@@ -45,8 +46,8 @@
 ;; CoffeeScript
 (add-to-list 'load-path "/my/config/emacs/d/coffee-mode")
 (require 'coffee-mode)
-;;(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-;;(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
 (defun coffee-custom () ;; tabs
   "coffee-mode-hook"
