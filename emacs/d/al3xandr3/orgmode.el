@@ -125,7 +125,7 @@
 
 (defun blog-server ()
   (interactive)
-  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8; cd /my/al3xandr3.github.com/; rm -rf _site/; jekyll --server &" "" ""))
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8; cd /my/al3xandr3.github.com/; rm -rf _site/; jekyll --auto --server &" "" ""))
 (global-set-key (kbd "C-z") 'blog-server)
 
 (defun blog-open ()
@@ -136,7 +136,6 @@
   (interactive)
   (org-export-as-html 3 nil nil nil nil "/my/al3xandr3.github.com/_posts")
   (blog-rb)
-  (blog-server)
   (blog-open))
 
 (defun page ()

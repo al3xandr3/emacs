@@ -13,6 +13,7 @@
 ;; font
 ;; "Menlo", "Helvetica Neue", "Bitstream Vera Sans Mono", 
 (defvar myfont "Inconsolata")
+;;(defvar myfont "Consolas")
 (defvar myfontsize 150)
 (set-face-attribute 'default nil :family myfont :height myfontsize)
 (set-face-attribute 'minibuffer-prompt nil :family myfont :height myfontsize)
