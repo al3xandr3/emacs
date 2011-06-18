@@ -52,13 +52,11 @@ libs=$(find /dmg/ruby -type d | grep 'lib$')
 for d in $libs; do 
  export RUBYLIB=$d:$RUBYLIB 
 done
-#for_each 'cdq ~/develop && dirs lib' 'RUBYLIB=$RUBYLIB:$each'
-#export RUBYLIB=/dmg/ruby/rubyvis/lib:$RUBYLIB
-# jruby setup
-export JRUBY_HOME=/my/config/bin/java/jruby-1.5.1
-export PATH=$JRUBY_HOME/bin:$PATH
 alias rb="ruby"
 
+# jruby setup
+export JRUBY_HOME=/dmg/ruby/jruby-1.6.2
+export PATH=$PATH:$JRUBY_HOME/bin
 
 # rhino (for jslint)
 alias rhino="java -jar /my/config/bin/javascript/rhino1_7R2/js.jar "
