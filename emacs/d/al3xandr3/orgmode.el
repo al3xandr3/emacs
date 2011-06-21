@@ -142,5 +142,4 @@
   (interactive)
   (org-export-as-html 3 nil nil nil nil "/my/al3xandr3.github.com/pages")
   (blog-rb)
-  (blog-server)
   (blog-open))
