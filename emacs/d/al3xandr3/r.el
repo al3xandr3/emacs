@@ -25,7 +25,9 @@
         (factor     . "table")
         (integer    . "summary")
         (lm         . "summary")
-        (other      . "str")))
+        (other      . "str")
+        ;;(other      . "eval")
+        ))
 
 
 (defun ess-R-object-tooltip ()
