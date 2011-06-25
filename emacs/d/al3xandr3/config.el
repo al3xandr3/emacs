@@ -108,6 +108,19 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+;;;;;;;;;;;;;; 
+;; Automatic Parentheses Close
+;; enable skeleton-pair insert globally
+(setq skeleton-pair t)
+;;(setq skeleton-pair-on-word t)
+(global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\`") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
+
 ;;;;;;;;;;;;;;;;;;;;
 ;; My Utils
 (defun sheller (ffilter cmd myfile post-cmd)

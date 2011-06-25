@@ -40,6 +40,7 @@
 (load "/my/config/emacs/d/al3xandr3/javascript.el") ; javascript
 (load "/my/config/emacs/d/al3xandr3/clojure.el")    ; clojure
 (load "/my/config/emacs/d/al3xandr3/ruby.el")       ; ruby
+(load "/my/config/emacs/d/al3xandr3/r.el")       ; r
 
 
 
