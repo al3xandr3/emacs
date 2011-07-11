@@ -4,9 +4,10 @@
 options(tab.width = 2)
  
 .First <- function(){
- #library(Hmisc)
- #library(R2HTML)
- cat("\nWelcome at", date(), "\n") 
+  #library(Hmisc)
+  #library(R2HTML)
+  library(ggplot2)
+  cat("\nWelcome at", date(), "\n\n") 
 }
 
 .Last <- function(){ 

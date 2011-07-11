@@ -1,0 +1,3 @@
+
+* javascript
+C-c d  fly-mode show error

@@ -9,6 +9,10 @@
   (interactive)
   (load-file "/my/config/emacs/dot-emacs.el"))
 
+(defun key ()
+  (interactive)
+  (load-file "/my/config/emacs/key-bindings.el"))
+
 (defun config ()
   (interactive)
   (find-file "/my/config/emacs/d/al3xandr3/"))

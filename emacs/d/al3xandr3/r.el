@@ -1,25 +1,41 @@
-;; ess-R-object-tooltip.el
-;; 
-;; I have defined a function, ess-R-object-tooltip, that when 
-;; invoked, will return a tooltip with some information about
-;; the object at point.  The information returned is 
-;; determined by which R function is called.  This is controlled
-;; by an alist, called ess-R-object-tooltip-alist.  The default is
-;; given below.  The keys are the classes of R object that will
-;; use the associated function.  For example, when the function
-;; is called while point is on a factor object, a table of that
-;; factor will be shown in the tooltip.  The objects must of course
-;; exist in the associated infaerior R process for this to work.
-;; The special key "other" in the alist defines which function
-;; to call when the class is not mached in the alist.  By default,
-;; the str function is called, which is actually a fairly useful
-;; default for data.frame and function objects. 
-;; 
-;; The last line of this file shows my default keybinding. 
-;; I simply save this file in a directory in my load-path
-;; and then place (require 'ess-R-object-tooltip) in my .emacs 
 
-;; the alist
+;; Use Shift+Enter to do Everything
+(setq ess-ask-for-ess-directory nil)
+  (setq ess-local-process-name "R")
+  (setq ansi-color-for-comint-mode 'filter)
+  (setq comint-prompt-read-only t)
+  (setq comint-scroll-to-bottom-on-input t)
+  (setq comint-scroll-to-bottom-on-output t)
+  (setq comint-move-point-for-output t)
+  (defun my-ess-start-R ()
+    (interactive)
+    (if (not (member "*R*" (mapcar (function buffer-name) (buffer-list))))
+      (progn
+	(delete-other-windows)
+	(setq w1 (selected-window))
+	(setq w1name (buffer-name))
+	(setq w2 (split-window w1))
+	(R)
+	(set-window-buffer w2 "*R*")
+	(set-window-buffer w1 w1name))))
+  (defun my-ess-eval ()
+    (interactive)
+    (my-ess-start-R)
+    (if (and transient-mark-mode mark-active)
+	(call-interactively 'ess-eval-region)
+      (call-interactively 'ess-eval-line-and-step)))
+  (add-hook 'ess-mode-hook
+	    '(lambda()
+	       (local-set-key [(shift return)] 'my-ess-eval)))
+  (add-hook 'inferior-ess-mode-hook
+	    '(lambda()
+	       (local-set-key [C-up] 'comint-previous-input)
+	       (local-set-key [C-down] 'comint-next-input)))
+  (require 'ess-site)
+
+
+;; Tooltip display Pointed Object
+
 (setq ess-R-object-tooltip-alist
       '((numeric    . "summary")
         (factor     . "table")
@@ -28,7 +44,6 @@
         (other      . "str")
         ;;(other      . "eval")
         ))
-
 
 (defun ess-R-object-tooltip ()
   "Get info for object at point, and display it in a tooltip."
@@ -59,9 +74,24 @@
                         (tooltip-show-at-point bs -415 -85)))))))))
     (kill-buffer tmpbuf)))
 
-;; my default key map
-;;(define-key ess-mode-map "\C-c\C-g" 'ess-R-object-tooltip)
 (global-set-key "\C-c\C-g" 'ess-R-object-tooltip)
 
-(provide 'ess-R-object-tooltip)
+;; Tooltip Inspect Pointed Object
+(defun ess-R-inspect-tooltip ()
+  "Inspect object at point, and display it in a tooltip."
+  (interactive)
+  (let ((objname (buffer-substring (region-beginning) (region-end)))
+        (curbuf (current-buffer))
+        (tmpbuf (get-buffer-create "**ess-R-inspect-tooltip**")))
+    (if objname
+        (progn
+          (ess-command (concat "eval(" objname ")\n")  tmpbuf)   
+          (set-buffer tmpbuf)
+          (let ((bs (buffer-string)))
+            (progn
+             (set-buffer curbuf)
+             (tooltip-show-at-point bs 0 0)))))
+    (kill-buffer tmpbuf)))
+(global-set-key "\C-cg" 'ess-R-inspect-tooltip)
+
 

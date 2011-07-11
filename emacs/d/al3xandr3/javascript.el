@@ -20,6 +20,7 @@
        (string-match "\/wa\\.js$" (buffer-file-name))
        (string-match "\/wa-deprecated\\.js$" (buffer-file-name))
        (string-match "\/s_code\\.js$" (buffer-file-name))
+       (string-match "\/s_code_secure\\.js$" (buffer-file-name))
        (string-match "\/trackable\\.js$" (buffer-file-name))
        (string-match "\/wa-static\\.js$" (buffer-file-name))
        (string-match "\/wa-secure\\.js$" (buffer-file-name))
