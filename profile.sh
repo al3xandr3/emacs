@@ -30,7 +30,7 @@ HISTSIZE=1000
 if [[ $platform == 'osx' ]]; then
 	alias ls="ls -hoGCF"
 	alias l="ls -alGF"
- 	alias e="open -a /Applications/Aquamacs.app/ "
+ 	alias e="open -a /Applications/Aquamacs24.app/ "
 	alias m="mate "
 	alias o="open "
 elif [[ $platform == 'linux' ]]; then

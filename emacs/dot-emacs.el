@@ -11,7 +11,7 @@
 
 (defun key ()
   (interactive)
-  (load-file "/my/config/emacs/key-bindings.el"))
+  (find-file "/my/config/emacs/key-bindings.org"))
 
 (defun config ()
   (interactive)
@@ -36,6 +36,10 @@
 (defun blog ()
   (interactive)
   (find-file "/my/al3xandr3.github.com/_org/posts"))
+
+(defun rdir ()
+  (interactive)
+  (find-file "/my/proj/r"))
 
 
 ;; load customizations

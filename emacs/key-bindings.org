@@ -1,3 +1,6 @@
 
+* org-mode
+C-c C-t status change TODO -> DONE
+
 * javascript
 C-c d  fly-mode show error
