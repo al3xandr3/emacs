@@ -17,8 +17,7 @@ bind '"\e[B": history-search-forward'
 
 # search cd in parallel in all these dirs
 # for tab completion, check: bash-completion
-export CDPATH=".:..:../..:/skype:/my"
-alias mylib="cd /dmg/ruby/mylib"
+export CDPATH=".:..:../..:/skype:/my:/my/proj"
 
 # adding ~/bin/exec as path
 export PATH=/my/config/bin:/usr/local/sbin:/usr/local/bin:$PATH
@@ -30,7 +29,7 @@ HISTSIZE=1000
 if [[ $platform == 'osx' ]]; then
 	alias ls="ls -hoGCF"
 	alias l="ls -alGF"
- 	alias e="open -a /Applications/Aquamacs24.app/ "
+ 	alias e="open -a /Applications/Aquamacs.app/ "
 	alias m="mate "
 	alias o="open "
 elif [[ $platform == 'linux' ]]; then
@@ -52,6 +51,7 @@ libs=$(find /dmg/ruby -type d | grep 'lib$')
 for d in $libs; do 
  export RUBYLIB=$d:$RUBYLIB 
 done
+export RUBYLIB=/my/proj/ruby:$RUBYLIB
 alias rb="ruby"
 
 # jruby setup

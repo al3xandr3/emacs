@@ -21,6 +21,7 @@
        (string-match "\/wa-deprecated\\.js$" (buffer-file-name))
        (string-match "\/s_code\\.js$" (buffer-file-name))
        (string-match "\/s_code_secure\\.js$" (buffer-file-name))
+       (string-match "\/affiliate\\.js$" (buffer-file-name))
        (string-match "\/trackable\\.js$" (buffer-file-name))
        (string-match "\/wa-static\\.js$" (buffer-file-name))
        (string-match "\/wa-secure\\.js$" (buffer-file-name))
@@ -61,7 +62,17 @@
 (add-hook 'after-save-hook
           '(lambda ()
              (when (string-match "\.coffee$" (buffer-name))
-               (coffee-compile-file))))
+               (coffee-compile-file))             
+             (if (or 
+                  (string-match "\/affiliate\\.coffee$" (buffer-file-name))
+                  )
+                 (progn
+                   (message "compiling...")
+                   (sheller-buffer 
+                    "\\.coffee$"
+                    "js-compile "))
+               (message "no compile"))
+             ))
 
 ;;;; Flymake
 (eval-after-load 'js

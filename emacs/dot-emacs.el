@@ -25,22 +25,17 @@
   (interactive)
   (find-file "/my/config/org/me.org"))
 
-(defun optimizer ()
-  (interactive)
-  (find-file "/my/config/org/optimizer.org"))
-
 (defun data ()
   (interactive)
-  (find-file "/my/data/data.org"))
+  (find-file "/my/proj/data/data.org"))
 
 (defun blog ()
   (interactive)
-  (find-file "/my/al3xandr3.github.com/_org/posts"))
+  (find-file "/my/proj/al3xandr3.github.com/_org/posts"))
 
 (defun rdir ()
   (interactive)
   (find-file "/my/proj/r"))
-
 
 ;; load customizations
 (load "/my/config/emacs/d/al3xandr3/config.el")     ; my config
@@ -48,12 +43,7 @@
 (load "/my/config/emacs/d/al3xandr3/javascript.el") ; javascript
 (load "/my/config/emacs/d/al3xandr3/clojure.el")    ; clojure
 (load "/my/config/emacs/d/al3xandr3/ruby.el")       ; ruby
-(load "/my/config/emacs/d/al3xandr3/r.el")       ; r
-
-
-
-
-
-
-
+(load "/my/config/emacs/d/al3xandr3/r.el")          ; r
+(eval-after-load "sql"
+  '(load-library "/my/config/emacs/d/sql-indent.el")) ; sql-indent
 

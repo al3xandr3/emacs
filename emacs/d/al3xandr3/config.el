@@ -5,7 +5,10 @@
 (tool-bar-mode -1)
 
 ;; turn on fringes
-(fringe-mode '(15 . 10))
+(fringe-mode '(5 . 5))
+(set-face-background 'fringe "#F5F5F5")
+
+;;(scroll-bar-mode -1)
 
 ;; line spacing
 (setq-default line-spacing 3)

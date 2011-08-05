@@ -52,7 +52,7 @@
 (setq org-confirm-babel-evaluate nil) ;; don't ask to evaluate
 (setq org-log-done t) ;; +STARTUP: logdone
 (setq org-todo-keywords
-      '((sequence "QUEUE" "WAIT" "TODO" "|" "DONE"))
+      '((sequence "WAIT" "TODO" "QUEUE" "|"  "DONE"))
       org-todo-keyword-faces
       '(("QUEUE" . (:foreground "DarkOrange2" :weight bold))
 	("DONE" . (:foreground "light sea green"))
@@ -67,7 +67,7 @@
       org-agenda-files (list "/my/config/org/me.org"
                              "/my/config/org/skype.org"
                              "/my/config/org/optimizer.org"
-                             "/my/data/data.org"))
+                             "/my/proj/data/data.org"))
 (global-set-key "\C-ca" 'org-agenda) 
 
 ;; Export
@@ -119,13 +119,13 @@
 ;;;; (org)Blog
 (defun blog-rb ()
   (interactive)
-  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/al3xandr3.github.com/pre-process.rb" "" "")
-  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/al3xandr3.github.com/tags.rb" "" "")
-  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/al3xandr3.github.com/cloud.rb" "" ""))
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/proj/al3xandr3.github.com/pre-process.rb" "" "")
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/proj/al3xandr3.github.com/tags.rb" "" "")
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8;ruby /my/proj/al3xandr3.github.com/cloud.rb" "" ""))
 
 (defun blog-server ()
   (interactive)
-  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8; cd /my/al3xandr3.github.com/; rm -rf _site/; jekyll --auto --server &" "" "")
+  (sheller ".*" "export LC_ALL=en_US.UTF-8; export LANG=en_US.UTF-8; cd /my/proj/al3xandr3.github.com/; rm -rf _site/; jekyll --auto --server &" "" "")
   (blog-open))
 (global-set-key (kbd "C-z") 'blog-server)
 
@@ -135,11 +135,11 @@
 
 (defun post ()
   (interactive)
-  (org-export-as-html 3 nil nil nil nil "/my/al3xandr3.github.com/_posts")
+  (org-export-as-html 3 nil nil nil nil "/my/proj/al3xandr3.github.com/_posts")
   (blog-rb))
 
 (defun page ()
   (interactive)
-  (org-export-as-html 3 nil nil nil nil "/my/al3xandr3.github.com/pages")
+  (org-export-as-html 3 nil nil nil nil "/my/proj/al3xandr3.github.com/pages")
   (blog-rb)
   (blog-open))

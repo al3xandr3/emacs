@@ -16,8 +16,8 @@ options(tab.width = 2)
  
 .First <- function(){
   library(ggplot2)
-  load.my.r()
-  cat("\nWelcome at", date(), "\n\n") 
+  cat("\nWelcome at", date(), "\n")
+  cat("\ndon't forget to load.my.r()\n")
 }
 
 .Last <- function(){ 

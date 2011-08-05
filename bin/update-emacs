@@ -2,9 +2,8 @@
 mkdir /tmp/emacsdownload && cd /tmp/emacsdownload
 curl http://braeburn.aquamacs.org/~dr/Aquamacs/24/Aquamacs-nightly.tar.bz2 -o /tmp/emacsdownload/aquamacs.tar.bz2
 tar xvjf /tmp/emacsdownload/aquamacs.tar.bz2
-killall -v Aquamacs #force close, be carefull might loose data
-rm -rf /Applications/Aquamacs24Old.app
-mv -f /Applications/Aquamacs24.app /Applications/Aquamacs24Old.app
-mv -f /tmp/emacsdownload/Aquamacs.app/ /tmp/emacsdownload/Aquamacs24.app/
-cp -R /tmp/emacsdownload/Aquamacs24.app /Applications
-rm -rf /tmp/emacsdownload
+killall -v Aquamacs                                             # force close, be carefull might loose data
+rm -rf /Applications/AquamacsOld.app                            # remove old
+mv -f /Applications/Aquamacs.app /Applications/AquamacsOld.app  # backup current one
+cp -R /tmp/emacsdownload/Aquamacs.app /Applications             # make new one the current
+rm -rf /tmp/emacsdownload                                       # clean up temp
