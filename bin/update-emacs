@@ -12,7 +12,6 @@ if [ -n "$RUN" ]; then
 EOT`
   if [[ $x = "No" ]]; then exit; fi
 fi
-killall -v Aquamacs #force close, be carefull might loose data
 rm -rf /Applications/AquamacsOld.app
 mv -f /Applications/Aquamacs.app /Applications/AquamacsOld.app
 cp -R /tmp/emacsdownload/Aquamacs.app /Applications
