@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir /tmp/emacsdownload && cd /tmp/emacsdownload
-curl http://braeburn.aquamacs.org/~dr/Aquamacs/24/Aquamacs-nightly.tar.bz2 -o /tmp/emacsdownload/aquamacs.tar.bz2
-tar xvjf /tmp/emacsdownload/aquamacs.tar.bz2
+curl http://braeburn.aquamacs.org/~dr/Aquamacs/24/Aquamacs-nightly.tar.bz2 --silent -o /tmp/emacsdownload/aquamacs.tar.bz2
+tar xjf /tmp/emacsdownload/aquamacs.tar.bz2
 RUN=`ps -ef | grep Aquamacs | grep -v grep`
 if [ -n "$RUN" ]; then
   x=`/usr/bin/osascript <<EOT

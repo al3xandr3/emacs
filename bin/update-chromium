@@ -2,7 +2,7 @@
 CHROMEDIR="http://build.chromium.org/f/chromium/snapshots/Mac/"
 mkdir /tmp/chromedownload && cd /tmp/chromedownload
 curl $CHROMEDIR/LATEST -o /tmp/chromedownload/LATEST --silent && LATEST=`cat /tmp/chromedownload/LATEST`
-curl $CHROMEDIR/$LATEST/chrome-mac.zip -o /tmp/chromedownload/chrome-mac.zip
+curl $CHROMEDIR/$LATEST/chrome-mac.zip --silent -o /tmp/chromedownload/chrome-mac.zip
 unzip -qq /tmp/chromedownload/chrome-mac.zip
 RUN=`ps -ef | grep Chromium | grep -v grep`
 if [ -n "$RUN" ]; then
