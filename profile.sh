@@ -45,20 +45,28 @@ alias backup="sh /my/config/bin/backup.sh"
 alias diff-ui="opendiff " # windowed diff
 alias diff-svn="svn diff --diff-cmd diff-filemergesvn " # svn diff w/ filemerge
 
-# ruby
+## ruby
+
 # libs folder
 libs=$(find /dmg/ruby -type d | grep 'lib$')
 for d in $libs; do 
  export RUBYLIB=$d:$RUBYLIB 
 done
 export RUBYLIB=/my/proj/ruby:$RUBYLIB
+
+# short alias
 alias rb="ruby"
 
 # jruby setup
-export JRUBY_HOME=/dmg/ruby/jruby-1.6.2
-export PATH=$PATH:$JRUBY_HOME/bin
+#export JRUBY_HOME=/dmg/ruby/jruby-1.6.2
+#export PATH=$PATH:$JRUBY_HOME/bin
+
+[[ -s "/Users/alexandremartins/.rvm/scripts/rvm" ]] && source "/Users/alexandremartins/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # rhino (for jslint)
 alias rhino="java -jar /my/config/bin/javascript/rhino1_7R2/js.jar "
 alias rhino-shell="java -cp /my/config/bin/javascript/rhino1_7R2/js.jar:/my/config/bin/javascript/jline.jar org.mozilla.javascript.tools.shell.Main -opt -1"    
 alias rhino-debug="java -cp  /my/config/bin/javascript/rhino1_7R2/js.jar org.mozilla.javascript.tools.debugger.Main"
+
+#python
+export PYTHONPATH=/my/proj/python:$PYTHONPATH

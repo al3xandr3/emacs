@@ -46,4 +46,4 @@
 (load "/my/config/emacs/d/al3xandr3/r.el")          ; r
 (eval-after-load "sql"
   '(load-library "/my/config/emacs/d/sql-indent.el")) ; sql-indent
-
+(load "/my/config/emacs/d/al3xandr3/python.el")          ; python
