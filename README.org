@@ -1,1 +1,2 @@
 configuration dot-files, emacs + shell.
+this config was done for Aquamacs, assumes ESS installed for example.
