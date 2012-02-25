@@ -1,1 +1,1 @@
-Aquamacs configuration
+Aquamacs dot-emacs setup
