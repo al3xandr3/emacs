@@ -1,2 +1,1 @@
-
-configuration dot-files, emacs + shell
+Aquamacs configuration
